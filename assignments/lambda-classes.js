@@ -35,7 +35,7 @@ class Student extends Person{
         this.favSubjects=stuAttributes.favSubjects;
     }
     listsSubjects(){
-        return this.favSubjects;
+        return `${this.favSubjects}`;
     }
     PRAssignment(subject){
         return `${this.name} has submitted a PR for ${subject}`;
