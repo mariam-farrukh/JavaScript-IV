@@ -26,3 +26,74 @@ class Instructor extends Person{
         return `{student.name} receives a perfect score on {subject}`;
     }
 }
+
+class Student extends Person{
+    constructor(stuAttributes){
+        super(stuAttributes);
+        this.previousBackground=stuAttributes.previousBackground;
+        this.className=stuAttributes.className;
+        this.favSubjects=stuAttributes.favSubjects;
+    }
+    listsSubjects(){
+        return this.favSubjects;
+    }
+    PRAssignment(){
+        return `{this.name} has submitted a PR for {subject}`;
+    }
+    sprintChalenge(){
+        return `{this.name} has begun sprint challenge on {subject}`
+    }
+}
+
+class ProjectManager extends Instructor{
+    constructor(pmAttributes){
+        super(pmAttributes);
+        this.gradClassName=pmAttributes.gradClassName;
+        this.favInstructor=pmAttributes.favInstructor;
+    }
+    standUp(){
+        return `${this.name} announces to ${channel}, @channel standup time!`
+    }
+    debugsCode(){
+        return `${this.name} debugs ${stuAttributes.name}'s code on {subject}`
+    }
+}
+
+/* objects for each class here*/
+
+const fred = new Instructor({
+    name: 'Fred',
+    location: 'Bedrock',
+    age: 37,
+    favLanguage: 'JavaScript',
+    specialty: 'Front-end',
+    catchPhrase: `Don't forget the homies`
+  });
+
+  const pat = new Instructor({
+    name: 'Pat',
+    location: 'Bedrock',
+    age: 37,
+    favLanguage: 'JavaScript',
+    specialty: 'Front-end',
+    catchPhrase: `Don't forget the homies`
+  });
+
+
+  const bob = new Student({
+    name: 'Bob',
+    location: 'Bedrock',
+    age: 37,
+    favLanguage: 'JavaScript',
+    specialty: 'Front-end',
+    catchPhrase: `Don't forget the homies`
+  });
+
+  const tina = new Student({
+    name: 'tina',
+    location: 'Bedrock',
+    age: 37,
+    favLanguage: 'JavaScript',
+    specialty: 'Front-end',
+    catchPhrase: `Don't forget the homies`
+  });
