@@ -19,11 +19,11 @@ class Instructor extends Person{
         this.favLanguage=instAttributes.favLanguage;
         this.catchPhrase=instAttributes.catchPhrase;
     }
-    demo(){
-        return `Today we are learning about {subject}.`;
+    demo(subject){
+        return `Today we are learning about ${subject}.`;
     }
-    grade(){
-        return `{student.name} receives a perfect score on {subject}`;
+    grade(student, subject){
+        return `${student.name} receives a perfect score on ${subject}`;
     }
 }
 
@@ -37,11 +37,11 @@ class Student extends Person{
     listsSubjects(){
         return this.favSubjects;
     }
-    PRAssignment(){
-        return `{this.name} has submitted a PR for {subject}`;
+    PRAssignment(subject){
+        return `${this.name} has submitted a PR for ${subject}`;
     }
-    sprintChallenge(){
-        return `{this.name} has begun sprint challenge on {subject}`
+    sprintChallenge(subject){
+        return `${this.name} has begun sprint challenge on ${subject}`
     }
 }
 
@@ -51,11 +51,11 @@ class ProjectManager extends Instructor{
         this.gradClassName=pmAttributes.gradClassName;
         this.favInstructor=pmAttributes.favInstructor;
     }
-    standUp(){
+    standUp(channel){
         return `${this.name} announces to ${channel}, @channel standup time!`
     }
-    debugsCode(){
-        return `${this.name} debugs ${stuAttributes.name}'s code on {subject}`
+    debugsCode(student, subject){
+        return `${this.name} debugs ${student.name}'s code on ${subject}`
     }
 }
 
@@ -129,15 +129,16 @@ const fred = new Instructor({
     favInstructor: 'Pat',
   });
 
-  console.log(fred.name);
-  console.log(pat.catchPhrase);
-  console.log(pat.demo());
-  console.log(fred.grade());
+  console.log(fred.name); //Fred
+  console.log(pat.catchPhrase); //What are those!
+  console.log(pat.demo()); //Today we are learning about {subject}.
+  console.log(fred.grade(bob, 'js4')); //{student.name} receives a perfect score on {subject}
+  console.log(mike.speak()); //Hello my name is {this.name}, I am from {this.location}
   console.log(bob.listsSubjects());
-  console.log(tina.PRAssignment());
-  console.log(bob.sprintChallenge());
+  console.log(tina.PRAssignment('JS3')); //{this.name} has submitted a PR for {subject}
+  console.log(bob.sprintChallenge('JS week1')); //{this.name} has begun sprint challenge on {subject}
   console.log(tina.favSubjects);
   console.log(mia.gradClassName);
-  console.log(mia.standUp());
-  console.log(mike.favInstructor);
-  console.log(mike.debugsCode());
+  console.log(mia.standUp('Best Group Ever')); //{this.name} announces to {channel}, @channel standup time!
+  console.log(mike.favInstructor); //Pat
+  console.log(mike.debugsCode(tina, 'JS2')); //{this.name} debugs {student.name}'s code on {subject}
