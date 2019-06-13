@@ -25,6 +25,16 @@ class Instructor extends Person{
     grade(student, subject){
         return `${student.name} receives a perfect score on ${subject}`;
     }
+    finalGrade(student){
+        let points = Math.round(Math.random() * 100);
+        if (student.grade >= 100) {
+            student.grade -= points;
+            return `${points} points are subtracted from ${student.name}'s grade.  ${student.name}'s current grade is ${student.grade}`;
+        } else {
+            student.grade += points;
+            return `${points} points are added to ${student.name}'s grade.  ${student.name}'s current grade is ${student.grade}`;
+        }
+    }
 }
 
 class Student extends Person{
@@ -33,6 +43,7 @@ class Student extends Person{
         this.previousBackground=stuAttributes.previousBackground;
         this.className=stuAttributes.className;
         this.favSubjects=stuAttributes.favSubjects;
+        this.grade=stuAttributes.grade;
     }
     listsSubjects(){
         return `${this.favSubjects}`;
@@ -42,6 +53,15 @@ class Student extends Person{
     }
     sprintChallenge(subject){
         return `${this.name} has begun sprint challenge on ${subject}`
+    }
+    graduate() {
+        if (this.grade >= 70) {
+            return `${this.name} has graduated with a final grade of ${this.grade}!`;
+        } else {
+            let diff = 70 - this.grade;
+            this.grade += diff;
+            return `After more grading, ${diff} points were earned and ${this.name} has graduated with a final grade of ${this.grade}!`;
+        }
     }
 }
 
@@ -90,6 +110,7 @@ const fred = new Instructor({
         'HTML/CSS',
         'JavaScript',
       ],
+    grade: 66,
   });
 
   const tina = new Student({
@@ -104,6 +125,7 @@ const fred = new Instructor({
         'Python',
         'JavaScript',
       ],
+    grade: 76,
   });
 
 
@@ -142,3 +164,6 @@ const fred = new Instructor({
   console.log(mia.standUp('Best Group Ever')); //{this.name} announces to {channel}, @channel standup time!
   console.log(mike.favInstructor); //Pat
   console.log(mike.debugsCode(tina, 'JS2')); //{this.name} debugs {student.name}'s code on {subject}
+  console.log(tina.grade);
+  console.log(fred.finalGrade(tina));
+  console.log(bob.graduate(pat));
