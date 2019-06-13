@@ -72,8 +72,8 @@ const fred = new Instructor({
 
   const pat = new Instructor({
     name: 'Pat',
-    location: 'Bedrock',
-    age: 37,
+    location: 'Chicago',
+    age: 42,
     favLanguage: 'JavaScript',
     specialty: 'Front-end',
     catchPhrase: `Don't forget the homies`
@@ -82,18 +82,29 @@ const fred = new Instructor({
 
   const bob = new Student({
     name: 'Bob',
-    location: 'Bedrock',
-    age: 37,
-    favLanguage: 'JavaScript',
-    specialty: 'Front-end',
-    catchPhrase: `Don't forget the homies`
+    location: 'Seattle',
+    age: 30,
+    previousBackground: 'Sales',
+    className: 'Web22',
+    favSubjects: [
+        'HTML/CSS',
+        'JavaScript',
+      ],
   });
 
   const tina = new Student({
-    name: 'tina',
-    location: 'Bedrock',
-    age: 37,
-    favLanguage: 'JavaScript',
-    specialty: 'Front-end',
-    catchPhrase: `Don't forget the homies`
+    name: 'Tina',
+    location: 'Boston',
+    age: 28,
+    previousBackground: 'Pilot',
+    className: 'Web20',
+    favSubjects: [
+        'HTML',
+        'CSS',
+        'Python',
+        'JavaScript',
+      ],
   });
+
+
+  
