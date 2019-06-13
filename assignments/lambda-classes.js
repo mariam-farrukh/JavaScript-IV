@@ -40,7 +40,7 @@ class Student extends Person{
     PRAssignment(){
         return `{this.name} has submitted a PR for {subject}`;
     }
-    sprintChalenge(){
+    sprintChallenge(){
         return `{this.name} has begun sprint challenge on {subject}`
     }
 }
@@ -75,8 +75,8 @@ const fred = new Instructor({
     location: 'Chicago',
     age: 42,
     favLanguage: 'JavaScript',
-    specialty: 'Front-end',
-    catchPhrase: `Don't forget the homies`
+    specialty: 'Back-end',
+    catchPhrase: `What are those!`
   });
 
 
@@ -107,4 +107,37 @@ const fred = new Instructor({
   });
 
 
+  const mia = new ProjectManager({
+    name: 'Mia',
+    location: 'St. Louis',
+    age: 24,
+    favLanguage: 'JavaScript',
+    specialty: 'Back-end',
+    catchPhrase: `You got this!`,
+    gradClassName: 'Web17',
+    favInstructor: 'Fred',
+  });
   
+  const mike = new ProjectManager({
+    name: 'Mike',
+    location: 'New York',
+    age: 28,
+    favLanguage: 'HTML/CSS',
+    specialty: 'Front-end',
+    catchPhrase: `Study hard, don't hardly study`,
+    gradClassName: 'Web16',
+    favInstructor: 'Pat',
+  });
+
+  console.log(fred.name);
+  console.log(pat.catchPhrase);
+  console.log(pat.demo());
+  console.log(fred.grade());
+  console.log(bob.listsSubjects());
+  console.log(tina.PRAssignment());
+  console.log(bob.sprintChallenge());
+  console.log(tina.favSubjects);
+  console.log(mia.gradClassName);
+  console.log(mia.standUp());
+  console.log(mike.favInstructor);
+  console.log(mike.debugsCode());
