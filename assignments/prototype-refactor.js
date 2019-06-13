@@ -16,15 +16,17 @@ Prototype Refactor
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 
-function GameObject (attributes){
+class GameObject{
+constructor(attributes){
     this.createdAt = attributes.createdAt;
     this.name = attributes.name;
     this.dimensions = attributes.dimensions;
     //console.log(this);
   }
-  GameObject.prototype.destroy = function() {
+  destroy() {
     return `${this.name} was removed from the game.`;
   }
+}
   
   /*
     === CharacterStats ===
@@ -33,15 +35,16 @@ function GameObject (attributes){
     * should inherit destroy() from GameObject's prototype
   */
   
-  function CharacterStats (characterAttributes) {
-    GameObject.call(this, characterAttributes);
+class CharacterStats extends GameObject{ 
+  constructor(characterAttributes){
+    super(characterAttributes);
     this.healthPoints = characterAttributes.healthPoints;
     //console.log(this);
   }
-  CharacterStats.prototype = Object.create(GameObject.prototype);
-  CharacterStats.prototype.takeDamage = function(){
+  takeDamage(){
     return `${this.name} took damage.`;
   }
+}
   
   /*
     === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -53,19 +56,18 @@ function GameObject (attributes){
     * should inherit takeDamage() from CharacterStats
   */
   
-  function Humanoid (humanoidAttributes) {
-    GameObject.call (this, humanoidAttributes);
-    CharacterStats.call(this, humanoidAttributes);
+class Humanoid extends CharacterStats{
+  constructor(humanoidAttributes) {
+    super(humanoidAttributes);
     this.team = humanoidAttributes.team;
     this.weapons = humanoidAttributes.weapons;
     this.language = humanoidAttributes.language;
     //console.log(this);
   }
-  Humanoid.prototype = Object.create(GameObject.prototype);
-  Humanoid.prototype = Object.create(CharacterStats.prototype);
-  Humanoid.prototype.greet = function(){
+  greet(){
     return `${this.name} offers a greeting in ${this.language}.`;
   }
+}
   
   
   
